@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseBody
+import soa.camel.Router.MagicNumbers.stringLength
+import soa.camel.Router.MagicNumbers.value
 
 @SpringBootApplication
 class Application
@@ -40,7 +42,7 @@ class SearchController(private val producerTemplate: ProducerTemplate) {
 class Router(meterRegistry: MeterRegistry) : RouteBuilder() {
 
     private val perKeywordMessages = TaggedCounter("per-keyword-messages", "keyword", meterRegistry)
-    object MagicNumbers{
+    object MagicNumbers {
         const val value = 8
         const val stringLength = 4
     }
@@ -51,9 +53,9 @@ class Router(meterRegistry: MeterRegistry) : RouteBuilder() {
                     .getHeader("keywords") as? String ?: ""
                 val (max, remain) = keyword.split(" ").partition { it.startsWith("max:") }
                 exchange.getIn().setHeader("keywords", remain.joinToString(" "))
-                exchange.getIn().setHeader("count", MagicNumbers.value)
+                exchange.getIn().setHeader("count", value)
                 max.firstOrNull()
-                    ?.drop(MagicNumbers.stringLength)
+                    ?.drop(stringLength)
                     ?.toIntOrNull()
                     ?.let { count ->
                         exchange.getIn().setHeader("count", count)
