@@ -1,6 +1,6 @@
-camel.component.twitter-search.consumer-key=<<CHANGE ME>>
-camel.component.twitter-search.consumer-secret=<<CHANGE ME>>
-camel.component.twitter-search.access-token=<<CHANGE ME>>
-camel.component.twitter-search.access-token-secret=<<CHANGE ME>>
+camel.component.twitter-search.consumer-key=<<KvZPvamepHpmznOLffnqM4O4m>>
+camel.component.twitter-search.consumer-secret=<<obfWIBLaNVL62w0zrIWf1J8tTn5sa9JErDGFKNpI0iz2Koq67c>>
+camel.component.twitter-search.access-token=<<1653332378453000195-eUQK063JJuhPBEav3hOrEMNjVZDV0z>>
+camel.component.twitter-search.access-token-secret=<<crBFtK1iUqGfTsCANxiJVSiJxPGw2NPHuO1LVzNnjKBu8>>
 
 management.endpoints.web.exposure.include=metrics
